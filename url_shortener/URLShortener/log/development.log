@@ -40,3 +40,18 @@ Migrating to CreateUsers (20201125201626)
   [1m[36mUser Create (2.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["email", "tes@gmail.com"], ["created_at", "2020-11-25 20:26:04.481908"], ["updated_at", "2020-11-25 20:26:04.481908"]]
   [1m[35m (8.4ms)[0m  [1m[35mCOMMIT[0m
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4762635147840476445)[0m
+  ↳ bin/rails:9
+  [1m[35m (14.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateShrotenedUrls (20201125202944)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (53.0ms)[0m  [1m[35mCREATE TABLE "shrotened_urls" ("id" bigserial primary key, "long_url" character varying NOT NULL, "short_url" character varying, "user_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20201125202944_create_shrotened_urls.rb:4
+  [1m[35m (16.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_shortened_url_on_short_url" ON "shortened_url"  ("short_url")[0m
+  ↳ db/migrate/20201125202944_create_shrotened_urls.rb:11
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(4762635147840476445)[0m
+  ↳ bin/rails:9
