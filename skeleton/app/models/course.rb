@@ -13,5 +13,8 @@ class Course < ApplicationRecord
         foreign_key: :prereq_id,
         class_name: :Course
 
+    belongs_to :instructor,
+        class_name: :User,
+        foreign_key: :instructor_id
         
 end
