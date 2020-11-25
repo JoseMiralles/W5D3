@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_11_25_202944) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["short_url"], name: "index_shortened_urls_on_short_url", unique: true
-    t.index ["user_id"], name: "index_shortened_urls_on_user_id", unique: true
+    t.index ["user_id"], name: "index_shortened_urls_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
