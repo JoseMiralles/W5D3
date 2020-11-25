@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 
     has_many :enrollments,
-        primary_key: :id,
+        primary_key: :id, # optional, because its a default.
         foreign_key: :student_id,
         class_name: :Enrollment
 
